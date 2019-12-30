@@ -6,17 +6,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"github.com/amunnelly/gowebappdatabase/carpenter"
 	"github.com/amunnelly/gowebappdatabase/commas"
 	"github.com/amunnelly/gowebappdatabase/connectdb"
-	"strings"
-	"time"
-	"os"
 
 )
 
-var t *template.Template
-var i interface{}
 
 // SeasonGraphDetail is a struct that supplies the title of a particular graph (the
 // season itsself, invariably.)
@@ -27,19 +21,14 @@ type SeasonGraphDetail struct {
 
 // ServeHome returns the home page template
 func ServeHome(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseGlob("./templates/*")
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Printf("\nHome.")
+
 	var g SeasonGraphDetail
 
-	if len(r.URL.Query()) == 0 {
 		fileBytes, err := ioutil.ReadFile("./queries/points_v_goal_difference.sql")
 		if err != nil {
 			log.Fatal(err)
 		}
-		season := "2017/2018"
+		season := "2017-2018"
 		q := string(fileBytes)
 		q = fmt.Sprintf(q, season)
 
@@ -55,5 +44,3 @@ func ServeHome(w http.ResponseWriter, r *http.Request) {
 		commas.CompileCsv(results)
 		t.ExecuteTemplate(w, "index.html", g)
 	}
-}
-
