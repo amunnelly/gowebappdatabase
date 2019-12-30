@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
-	"bigfatstats/connectdb"
+	"github.com/amunnelly/gowebappdatabase/connectdb"
 	"strconv"
 	"strings"
 )

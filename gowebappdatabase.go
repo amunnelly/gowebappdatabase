@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"gowebappdatabase/routing"
+	"github.com/amunnelly/gowebappdatabase/routing"
 )
 
 func main() {
