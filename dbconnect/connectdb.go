@@ -1,7 +1,7 @@
 package connectdb
 
 import (
-	"github.com/amunnelly/gowebappdatabase/connectdb/connector"
+	"github.com/amunnelly/gowebappdatabase/dbconnect/connector"
 	"database/sql"
 	"fmt"
 
