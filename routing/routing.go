@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"github.com/amunnelly/gowebappdatabase/commas"
-	"github.com/amunnelly/gowebappdatabase/connectdb"
+	"github.com/amunnelly/gowebappdatabase/dbconnect"
 
 )
 
