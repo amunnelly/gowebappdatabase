@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
-	"github.com/amunnelly/gowebappdatabase/connectdb"
+	"github.com/amunnelly/gowebappdatabase/dbconnect"
 	"strconv"
 	"strings"
 )
