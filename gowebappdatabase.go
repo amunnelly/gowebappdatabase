@@ -39,9 +39,9 @@ func main() {
 	if  len(os.Getenv("PORT")) > 0 {
 		s := &http.Server{
 			Addr: ":" + os.Getenv("PORT"),
-			ReadTimeout:  5 * time.Second,
-			WriteTimeout: 10 * time.Second,
-			IdleTimeout:  120 * time.Second,
+			ReadTimeout:  50 * time.Second,
+			WriteTimeout: 100 * time.Second,
+			IdleTimeout:  1200 * time.Second,
 		}
 		log.Fatal(s.ListenAndServe())
 			} 
