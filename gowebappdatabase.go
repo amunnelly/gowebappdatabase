@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"github.com/amunnelly/gowebappdatabase/routing"
+	"time"
 )
 
 func main() {
@@ -17,9 +18,35 @@ func main() {
 	// TO-DO: Fix these rascals
 	fmt.Println("Incipio - I begin.")
 
-	if  len(os.Getenv("PORT")) > 0 {
-		log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
-		} else {
-			log.Fatal(http.ListenAndServe(":8080", nil))
-		}
+	// https://blog.gopheracademy.com/advent-2016/exposing-go-on-the-internet/
+
+
+
+	// if  len(os.Getenv("PORT")) > 0 {
+	// 	log.Fatal(s.ListenAndServe(":"+os.Getenv("PORT"), nil))
+	// 	} else {
+	// 		log.Fatal(s.ListenAndServe(":8080", nil))
+	// 	}
+
+	s := &http.Server{
+		Addr: ":8080",
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		IdleTimeout:  120 * time.Second,
 	}
+
+
+	if  len(os.Getenv("PORT")) > 0 {
+		s := &http.Server{
+			Addr: ":" + os.Getenv("PORT"),
+			ReadTimeout:  5 * time.Second,
+			WriteTimeout: 10 * time.Second,
+			IdleTimeout:  120 * time.Second,
+		}
+		log.Fatal(s.ListenAndServe())
+			} 
+			
+			log.Fatal(s.ListenAndServe())
+
+
+}

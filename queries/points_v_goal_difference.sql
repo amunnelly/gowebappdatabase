@@ -8,4 +8,4 @@ where season = '%s'
 and Competition = 'Premier League'
 and Country = 'England'
 group by team
-order by points desc;
+order by sum(points) desc, sum(GoalDifference) desc, sum(GoalsFor) desc, sum(GoalsAgainst);
