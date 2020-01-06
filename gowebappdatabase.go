@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"os"
 	"github.com/amunnelly/gowebappdatabase/routing"
-	"time"
 )
 
 func main() {
@@ -22,31 +21,31 @@ func main() {
 
 
 
-	// if  len(os.Getenv("PORT")) > 0 {
-	// 	log.Fatal(s.ListenAndServe(":"+os.Getenv("PORT"), nil))
-	// 	} else {
-	// 		log.Fatal(s.ListenAndServe(":8080", nil))
-	// 	}
-
-	s := &http.Server{
-		Addr: ":8080",
-		ReadTimeout:  5 * time.Second,
-		WriteTimeout: 10 * time.Second,
-		IdleTimeout:  120 * time.Second,
-	}
-
-
 	if  len(os.Getenv("PORT")) > 0 {
-		s := &http.Server{
-			Addr: ":" + os.Getenv("PORT"),
-			ReadTimeout:  50 * time.Second,
-			WriteTimeout: 100 * time.Second,
-			IdleTimeout:  1200 * time.Second,
+		log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
+		} else {
+			log.Fatal(http.ListenAndServe(":8080", nil))
 		}
-		log.Fatal(s.ListenAndServe())
-			} 
+
+	// s := &http.Server{
+	// 	Addr: ":8080",
+	// 	ReadTimeout:  5 * time.Second,
+	// 	WriteTimeout: 10 * time.Second,
+	// 	IdleTimeout:  120 * time.Second,
+	// }
+
+
+	// if  len(os.Getenv("PORT")) > 0 {
+	// 	s := &http.Server{
+	// 		Addr: ":" + os.Getenv("PORT"),
+	// 		ReadTimeout:  50 * time.Second,
+	// 		WriteTimeout: 100 * time.Second,
+	// 		IdleTimeout:  1200 * time.Second,
+	// 	}
+	// 	log.Fatal(s.ListenAndServe())
+	// 		} 
 			
-			log.Fatal(s.ListenAndServe())
+	// 		log.Fatal(s.ListenAndServe())
 
 
 }
