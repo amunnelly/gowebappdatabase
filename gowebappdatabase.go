@@ -21,11 +21,7 @@ func main() {
 
 
 
-	if  len(os.Getenv("PORT")) > 0 {
 		log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
-		} else {
-			log.Fatal(http.ListenAndServe(":8080", nil))
-		}
 
 	// s := &http.Server{
 	// 	Addr: ":8080",
