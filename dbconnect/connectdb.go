@@ -4,6 +4,7 @@ import (
 	"github.com/amunnelly/gowebappdatabase/dbconnect/connector"
 	"database/sql"
 	"fmt"
+	"os"
 
 	// postgres driver
 	_ "github.com/lib/pq"
@@ -57,10 +58,9 @@ type PointsGdTable struct {
 func connectToDb() *sql.DB {
 	deets := connector.LoadDetails()
 
-	db, err := sql.Open("postgres", deets)
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
-		fmt.Println("Failed to connect")
-		panic(err)
+	  log.Fatal(err)
 	}
 
 	return db
