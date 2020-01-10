@@ -15,13 +15,21 @@ func main() {
 	http.HandleFunc("/", routing.ServeHome)
 
 	// TO-DO: Fix these rascals
+	fmt.Println(os.Getenv("PORT"))
 	fmt.Println("Incipio - I begin.")
 
 	// https://blog.gopheracademy.com/advent-2016/exposing-go-on-the-internet/
 
-
-
+	if  len(os.Getenv("PORT")) > 0 {
+		fmt.Println(os.Getenv("PORT"))
 		log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
+		} else {
+			fmt.Println("8080, in theory.")
+			log.Fatal(http.ListenAndServe(":8080", nil))
+		}
+
+
+		// log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 
 	// s := &http.Server{
 	// 	Addr: ":8080",
