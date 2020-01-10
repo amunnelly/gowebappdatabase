@@ -1,9 +1,10 @@
 package connectdb
 
 import (
-	"github.com/amunnelly/gowebappdatabase/dbconnect/connector"
+	// "github.com/amunnelly/gowebappdatabase/dbconnect/connector"
 	"database/sql"
 	"fmt"
+	"log"
 	"os"
 
 	// postgres driver
@@ -38,7 +39,7 @@ type Points struct {
 	Venue          string
 	Opposition     string
 	Points         int32
-	RunningPoints int32
+	RunningPoints  int32
 	GoalsFor       int32
 	GoalsAgainst   int32
 	GoalDifference int32
@@ -54,13 +55,12 @@ type PointsGdTable struct {
 	GoalsAgainst int32
 }
 
-
 func connectToDb() *sql.DB {
-	deets := connector.LoadDetails()
+	// deets := connector.LoadDetails()
 
 	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
-	  log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	return db
